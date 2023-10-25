@@ -1,0 +1,32 @@
+<div class="container">
+  <app-cockpit 
+    (serverCreated)="onServerAdded($event)"
+    (bpCreated)="onBlueprintAdded($event)"
+    ></app-cockpit>
+    <!-- from cockpit component -->
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="onChangeFirst()">Change first element</button>
+      <button class="btn btn-danger" (click)="onDestroyFirst()">Destroy first element</button>
+      <app-server-element 
+        *ngFor="let serverElement of serverElements"
+        [srvElement]="serverElement"
+        [name] = "serverElement.name">
+        <!-- [srvElement] is a property here, defined in server-element component, can be [element] if no alias -->
+        <p #contentParagraph>
+          <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+          <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+        </p>
+      </app-server-element>
+      <!-- ng-content placed in server-element, served as hook, and will project content within tags app-server-element -->
+    </div>
+  </div>
+</div>
+
+<!-- left hand side always defined somewhere else, right hand side defined in current component
+serverCreated & bpCreated defined in cockpit component
+srvElement defined in server-element component
+but all right hand side in app component -->
+
+<!-- parent pass data to child, while child pass event to parent -->
