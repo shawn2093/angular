@@ -5,4 +5,4 @@
 p {
   color: blue;
 }
-/* angular restrict app css to app html only but not other html even though they are included in app html */
+/* angular enforces app css to app html only but not other html even though they are included in app html */

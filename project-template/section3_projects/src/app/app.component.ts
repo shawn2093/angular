@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  // 85.4 add OnNavigate first, followed by loadedFeature
+  loadedFeature = 'recipe';
   
+  onNavigate(feature: string) {
+    this.loadedFeature = feature;
+  }
 }
